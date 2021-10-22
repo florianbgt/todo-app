@@ -1,0 +1,26 @@
+<div class="input-group mb-4">
+  <input
+    [(ngModel)]="name"
+    type="text"
+    class="form-control"
+    aria-describedby="add a new task"
+    placeholder="Add a new task"
+  />
+  <div class="input-group-append">
+    <button (click)="addTask()" type="button" class="btn btn-dark">
+      <fa-icon [icon]="faPlus"></fa-icon>
+      Add
+    </button>
+  </div>
+</div>
+
+<div class="input-group ml-auto mb-4" style="max-width: 250px">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Display:</span>
+  </div>
+  <select class="form-control" id="exampleFormControlSelect1">
+    <option>All</option>
+    <option>Only Done</option>
+    <option>Only To Do</option>
+  </select>
+</div>

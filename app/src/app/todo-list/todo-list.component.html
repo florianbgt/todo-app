@@ -1,0 +1,15 @@
+<app-todo-form></app-todo-form>
+
+<hr />
+
+<div *ngIf="tasks.length === 0; then no_task; else tasks_list"></div>
+
+<ng-template #no_task>
+  <p>No task to display</p>
+</ng-template>
+
+<ng-template #tasks_list>
+  <ul *ngFor="let task of tasks">
+    <app-task-item [task]="task"></app-task-item>
+  </ul>
+</ng-template>

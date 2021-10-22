@@ -1,0 +1,53 @@
+<div *ngIf="task">
+  
+  <div *ngIf="!editMode; then display_item; else change_item"></div>
+
+  <ng-template #display_item>
+    <div class="d-flex justify-content-between">
+      <div class="form-check my-auto">
+        <input
+          [(ngModel)]="task.done"
+          type="checkbox"
+          class="form-check-input"
+          [id]="'checkbox' + task.id"
+        />
+        <label class="form-check-label" [for]="'checkbox' + task.id">
+          <div *ngIf="task.done; then strikethrough; else normal"></div>
+          <ng-template #strikethrough>
+            <span>
+              <del class="text-secondary">{{ task.name }}</del>
+            </span>
+          </ng-template>
+          <ng-template #normal>
+            <span>{{ task.name }}</span>
+          </ng-template>
+        </label>
+      </div>
+      <div>
+        <button (click)="editMode = true" type="button" class="btn btn-warning">
+          <fa-icon [icon]="faEdit"></fa-icon>
+        </button>
+        <button type="button" class="btn btn-danger ml-1">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #change_item>
+    <div class="input-group">
+      <input [(ngModel)]="task.name" type="text" class="form-control" />
+      <div class="input-group-append">
+        <button
+          (click)="updateTask()"
+          type="button"
+          class="btn btn-success"
+        >
+          <fa-icon [icon]="faCheck"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+
+  <hr />
+</div>

@@ -1,0 +1,14 @@
+import { Task } from './task';
+
+export const TASKS: Task[] = [
+  { id: 1, name: 'Task 1', done: false },
+  { id: 2, name: 'Task 2', done: false },
+  { id: 3, name: 'Task 3', done: false },
+  { id: 4, name: 'Task 4', done: false },
+  { id: 5, name: 'Task 5', done: false },
+  { id: 6, name: 'Task 6', done: false },
+  { id: 7, name: 'Task 7', done: false },
+  { id: 8, name: 'Task 8', done: false },
+  { id: 9, name: 'Task 9', done: false },
+  { id: 10, name: 'Task 10', done: false }
+];
