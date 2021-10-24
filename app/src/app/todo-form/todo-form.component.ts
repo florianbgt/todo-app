@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { TaskService } from '../task.service';
 
@@ -9,6 +9,7 @@ import { TaskService } from '../task.service';
 })
 export class TodoFormComponent implements OnInit {
   name = ''
+  @Output() submit: EventEmitter<string> = new EventEmitter<string>();
   
   faPlus = faPlus
   
@@ -16,7 +17,8 @@ export class TodoFormComponent implements OnInit {
 
   addTask(): void {
     if (this.name !== '') {
-      this.taskService.addTask({'name': this.name, 'done': false}).subscribe()
+      this.submit.emit(this.name);
+      // this.taskService.addTask({'name': this.name, 'done': false}).subscribe()
       this.name = ''
     }
   }

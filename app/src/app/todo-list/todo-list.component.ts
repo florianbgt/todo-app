@@ -12,11 +12,15 @@ export class TodoListComponent implements OnInit {
 
   constructor(private taskService: TaskService) {}
 
-  getHeroes(): void {
+  addTask(name: string): void {
+    this.taskService.addTask({'name': name, 'done': false}).subscribe((task) => (this.tasks = [...this.tasks, task]))
+  }
+
+  getTasks(): void {
     this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
   }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getTasks();
   }
 }
