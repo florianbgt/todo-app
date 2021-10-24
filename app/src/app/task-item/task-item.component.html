@@ -7,6 +7,7 @@
       <div class="form-check my-auto">
         <input
           [(ngModel)]="task.done"
+          (ngModelChange)="updateTask()"
           type="checkbox"
           class="form-check-input"
           [id]="'checkbox' + task.id"
@@ -27,7 +28,7 @@
         <button (click)="editMode = true" type="button" class="btn btn-warning">
           <fa-icon [icon]="faEdit"></fa-icon>
         </button>
-        <button type="button" class="btn btn-danger ml-1">
+        <button (click)="deleteTask()" type="button" class="btn btn-danger ml-1">
           <fa-icon [icon]="faTrash"></fa-icon>
         </button>
       </div>

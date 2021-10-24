@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faEdit, faTrash, faCheck } from '@fortawesome/free-solid-svg-icons';
-import { FalseLiteral } from 'typescript';
 import { TaskService } from '../task.service';
 import { Task } from '../task';
 
@@ -27,10 +26,10 @@ export class TaskItemComponent implements OnInit {
     }
   }
 
-  checkTask(): void {
+  deleteTask(): void {
     if (this.task) {
-      this.task.done = !this.task.done
-      this.updateTask()
+      this.taskService.deleteTask(this.task).subscribe((task) => (this.task = task));
+      this.editMode = false;
     }
   }
 

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Task } from './task';
-import { TASKS } from './mock-tasks';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +25,13 @@ export class TaskService {
     return this.http.put<Task>(
       this.tasksUrl + `${task.id}/`,
       task,
+      this.httpOptions
+    );
+  }
+
+  deleteTask(task: Task): Observable<Task> {
+    return this.http.delete<Task>(
+      this.tasksUrl + `${task.id}/`,
       this.httpOptions
     );
   }
