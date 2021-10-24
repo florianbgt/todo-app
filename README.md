@@ -15,7 +15,11 @@ To use this app:
 - Clone this repository
 - Run the following command `docker-compose up`
 
+A sqlite database will automatically be created, migrations will be applied and a superuser will be created.
+
 The Django rest API is served here: http://localhost:8000
+
+You can log into the admin page (http://localhost:8000/admin) using the admin user (user: admin, password: testpass123)
 
 The Angular SPA is served here: https://localhost:4200
 
