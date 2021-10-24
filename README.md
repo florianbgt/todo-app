@@ -37,6 +37,8 @@ Use websocket to push newly created app to clients
 
 ### Angular
 
+Handle error during http requests (currently just logged into the console)
+
 The app is not production ready. Need to be built and serve over a web server (like Nginx)
 
 Add environement variable instead of hard coded API urls
