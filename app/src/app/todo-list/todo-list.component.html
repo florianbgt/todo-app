@@ -1,5 +1,21 @@
 <app-todo-form (submit)="addTask($event)"></app-todo-form>
 
+<div class="input-group ml-auto mb-4" style="max-width: 250px">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Display:</span>
+  </div>
+  <select
+    [(ngModel)]="filter"
+    (ngModelChange)="filterTasks()"
+    class="form-control"
+    id="exampleFormControlSelect1"
+  >
+    <option>All</option>
+    <option>Only Done</option>
+    <option>Only To Do</option>
+  </select>
+</div>
+
 <hr />
 
 <div *ngIf="tasks.length === 0; then no_task; else tasks_list"></div>
@@ -9,7 +25,7 @@
 </ng-template>
 
 <ng-template #tasks_list>
-  <ul *ngFor="let task of tasks">
+  <ul *ngFor="let task of filteredTasks">
     <app-task-item [task]="task"></app-task-item>
   </ul>
 </ng-template>

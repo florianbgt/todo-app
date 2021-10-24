@@ -18,7 +18,6 @@ export class TodoFormComponent implements OnInit {
   addTask(): void {
     if (this.name !== '') {
       this.submit.emit(this.name);
-      // this.taskService.addTask({'name': this.name, 'done': false}).subscribe()
       this.name = ''
     }
   }
