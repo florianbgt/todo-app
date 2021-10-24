@@ -9,7 +9,8 @@ import { TaskService } from '../task.service';
 })
 export class TodoFormComponent implements OnInit {
   name = ''
-  @Output() submit: EventEmitter<string> = new EventEmitter<string>();
+  
+  @Output() emitAddTask = new EventEmitter<string>();
   
   faPlus = faPlus
   
@@ -17,7 +18,7 @@ export class TodoFormComponent implements OnInit {
 
   addTask(): void {
     if (this.name !== '') {
-      this.submit.emit(this.name);
+      this.emitAddTask.emit(this.name);
       this.name = ''
     }
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faEdit, faTrash, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { TaskService } from '../task.service';
 import { Task } from '../task';
@@ -11,6 +11,9 @@ import { Task } from '../task';
 export class TaskItemComponent implements OnInit {
   @Input() task?: Task;
 
+  @Output() emitDeleteTask = new EventEmitter<Number>();
+  @Output() emitUpdateTask = new EventEmitter<Object>();
+
   editMode = false;
 
   faEdit = faEdit;
@@ -21,15 +24,14 @@ export class TaskItemComponent implements OnInit {
 
   updateTask(): void {
     if (this.task) {
-      this.taskService.updateTask(this.task).subscribe((task) => (this.task = task));
+      this.emitUpdateTask.emit(this.task);
       this.editMode = false;
     }
   }
 
   deleteTask(): void {
     if (this.task) {
-      this.taskService.deleteTask(this.task).subscribe((task) => (this.task = task));
-      this.editMode = false;
+      this.emitDeleteTask.emit(this.task.id);
     }
   }
 

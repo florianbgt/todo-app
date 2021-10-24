@@ -29,11 +29,8 @@ export class TaskService {
     );
   }
 
-  deleteTask(task: Task): Observable<Task> {
-    return this.http.delete<Task>(
-      this.tasksUrl + `${task.id}/`,
-      this.httpOptions
-    );
+  deleteTask(id: Number): Observable<Task> {
+    return this.http.delete<Task>(this.tasksUrl + `${id}/`, this.httpOptions);
   }
 
   constructor(private http: HttpClient) {}

@@ -6,8 +6,22 @@ services:
     build:
       context: api
       dockerfile: Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "python run.py && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./api:/code
     ports:
       - "8000:8000"
+  app:
+    restart: always
+    build:
+      context: app
+      dockerfile: Dockerfile
+    command: npm start
+    volumes:
+      - ./app:/code
+      - /code/node_modules
+    ports:
+      - "4200:4200"
+      - "49153:49153"
+    depends_on:
+      - api

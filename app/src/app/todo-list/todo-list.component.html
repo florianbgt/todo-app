@@ -1,4 +1,4 @@
-<app-todo-form (submit)="addTask($event)"></app-todo-form>
+<app-todo-form (emitAddTask)="addTask($event)"></app-todo-form>
 
 <div class="input-group ml-auto mb-4" style="max-width: 250px">
   <div class="input-group-prepend">
@@ -18,7 +18,7 @@
 
 <hr />
 
-<div *ngIf="tasks.length === 0; then no_task; else tasks_list"></div>
+<div *ngIf="filteredTasks.length === 0; then no_task; else tasks_list"></div>
 
 <ng-template #no_task>
   <p>No task to display</p>
@@ -26,6 +26,10 @@
 
 <ng-template #tasks_list>
   <ul *ngFor="let task of filteredTasks">
-    <app-task-item [task]="task"></app-task-item>
+    <app-task-item
+      [task]="task"
+      (emitDeleteTask)="deleteTask($event)"
+      (emitUpdateTask)="updateTask($event)"
+    ></app-task-item>
   </ul>
 </ng-template>
