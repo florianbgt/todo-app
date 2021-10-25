@@ -33,7 +33,7 @@ Add environement variable instead of hard coded info (secret keys, debug, CORS..
 
 The app does not use https
 
-Use websocket to push newly created app to clients
+Use websocket to push newly created task to clients
 
 ### Angular
 
